@@ -15,7 +15,7 @@ public class Main {
         }
 
         String tipo = "";
-        while (tipo.isEmpty() && !tipo.equalsIgnoreCase("PEQUENO") &&
+        while (tipo.isEmpty() || !tipo.equalsIgnoreCase("PEQUENO") &&
                 !tipo.equalsIgnoreCase("MEDIO") && !tipo.equalsIgnoreCase("SUV")) {
             System.out.print("Informe o tipo do carro (PEQUENO, MEDIO ou SUV): ");
             tipo = scanner.nextLine();
@@ -39,7 +39,7 @@ public class Main {
         String tipoNovo = null;
         while(tipoNovo == null ||
                 !(tipoNovo.isEmpty() || tipoNovo.equalsIgnoreCase("PEQUENO") ||
-                tipoNovo.equalsIgnoreCase("MEDIO") || tipoNovo.equalsIgnoreCase("SUV")) ) {
+                tipoNovo.equalsIgnoreCase("MEDIO") || tipoNovo.equalsIgnoreCase("SUV"))) {
             System.out.print("Informe o novo tipo do carro (PEQUENO, MEDIO ou SUV), ou enter para manter o mesmo: ");
             tipoNovo = scanner.nextLine();
         }
