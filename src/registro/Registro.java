@@ -10,7 +10,7 @@ public abstract class Registro {
 
     private Pessoa cliente;
 
-    public Registro(String local, LocalDateTime dataHora, Pessoa cliente {
+    public Registro(String local, LocalDateTime dataHora, Pessoa cliente) {
         this.local = local;
         this.dataHora = dataHora;
         this.cliente = cliente;
