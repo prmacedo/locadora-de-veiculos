@@ -1,16 +1,19 @@
 package registro;
 
-import java.time.LocalDate;
+import pessoa.*;
+import java.time.LocalDateTime;
 
 public abstract class Registro {
     private String local;
-    private int horasEmMinutos;
-    private LocalDate data;
 
-    public Registro(String local, int horasEmMinutos, LocalDate data) {
+    private LocalDateTime dataHora;
+
+    private Pessoa cliente;
+
+    public Registro(String local, LocalDateTime dataHora, Pessoa cliente {
         this.local = local;
-        this.horasEmMinutos = horasEmMinutos;
-        this.data = data;
+        this.dataHora = dataHora;
+        this.cliente = cliente;
     }
 
     public String getLocal() {
@@ -21,19 +24,21 @@ public abstract class Registro {
         this.local = local;
     }
 
-    public int getHorasEmMinutos() {
-        return horasEmMinutos;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public void setHorasEmMinutos(int horasEmMinutos) {
-        this.horasEmMinutos = horasEmMinutos;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
 
-    public LocalDate getData() {
-        return data;
+    public Pessoa getCliente() {
+        return cliente;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setCliente(Pessoa cliente) {
+        this.cliente = cliente;
     }
 }
+
+
