@@ -1,6 +1,7 @@
 ### IntelliJ IDEA ###
 .idea
 aluguel-veiculos.iml
+locadora-de-veiculos.iml
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
