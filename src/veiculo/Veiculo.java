@@ -47,19 +47,4 @@ public class Veiculo {
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
-
-    public static void cadastrarVeiculos() {
-    }
-
-    public static void alterarVeiculo() {
-    }
-
-    public static void buscarVeiculo() {
-    }
-
-    public static void alugarVeiculo() {
-    }
-
-    public static void devolverVeiculo() {
-    }
 }
