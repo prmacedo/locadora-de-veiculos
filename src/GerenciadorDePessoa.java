@@ -1,9 +1,6 @@
 import pessoa.Pessoa;
 import pessoa.PessoaFisica;
 import pessoa.PessoaJuridica;
-import veiculo.Veiculo;
-
-import java.security.spec.PSSParameterSpec;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,14 +12,18 @@ public class GerenciadorDePessoa {
             return;
         }
         // verificar o tipo de pessoa pelo documento informado:
-        if (documento.length() > 11) {
+        if (documento.length() > 12) {
             Pessoa pessoaNova = new PessoaJuridica(nome, documento);
             this.pessoas.add(pessoaNova);
         } else {
             Pessoa pessoaNova = new PessoaFisica(nome, documento);
             this.pessoas.add(pessoaNova);
         }
-
+    }
+    public Pessoa buscarPessoa(String termoDeBusca) {
+        return this.pessoas.stream()
+                .filter(pessoa -> pessoa.getDocumento().contains(termoDeBusca.toUpperCase()))
+                .findFirst().orElse(null);
     }
 
     public void listarPessoas() {
@@ -31,11 +32,11 @@ public class GerenciadorDePessoa {
             return;
         }
 
-        System.out.println("|    Nome     |     Documento   |");
-        System.out.println("| ----------- | --------------- |");
+        System.out.println("|    Documento    |       Nome      ");
+        System.out.println("| --------------- | --------------- ");
 
         for (Pessoa pessoa : this.pessoas) {
-            System.out.println("| " + String.format("%11s", pessoa.getDocumento()) + " | " + String.format("%15s", pessoa.getNome()) + " |");
+            System.out.println("| " + String.format("%15s", pessoa.getDocumento()) + " | " + String.format("%15s", pessoa.getNome()));
         }
     }
 
