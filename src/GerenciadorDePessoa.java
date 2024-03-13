@@ -30,7 +30,7 @@ public class GerenciadorDePessoa {
             return;
         }
         documentoNovo = removerCaracteres(documentoNovo);
-        if (!documentoNovo.trim().isEmpty()) {
+        if (!documentoNovo.isEmpty()) {
             documentoBuscado.setDocumento(documentoNovo);
         }
         if (!nomeNovo.trim().isEmpty()) {
@@ -62,7 +62,7 @@ public class GerenciadorDePessoa {
     }
 
     private String removerCaracteres (String documento) {
-        return documento.replaceAll("[^0-9]", "");
+        return documento.trim().replaceAll("[^0-9]", "");
     }
 
 }
