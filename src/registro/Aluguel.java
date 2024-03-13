@@ -1,9 +1,11 @@
 package registro;
 
-import java.time.LocalDate;
+import pessoa.Pessoa;
+
+import java.time.LocalDateTime;
 
 public class Aluguel extends Registro {
-    public Aluguel(String local, int horasEmMinutos, LocalDate data) {
-        super(local, horasEmMinutos, data);
+    public Aluguel(String local, LocalDateTime dataHora, Pessoa cliente) {
+        super(local, dataHora, cliente);
     }
 }

@@ -1,5 +1,7 @@
 package pessoa;
 
+import java.util.Objects;
+
 public abstract class Pessoa {
     protected String nome;
     protected String documento;
@@ -24,4 +26,18 @@ public abstract class Pessoa {
     public void setDocumento(String documento) {
         this.documento = documento;
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(documento);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Pessoa pessoa = (Pessoa) obj;
+        return Objects.equals(documento, pessoa.documento.toUpperCase());
+    }
+
 }
