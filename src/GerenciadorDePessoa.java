@@ -15,7 +15,7 @@ public class GerenciadorDePessoa {
         documento = removerCaracteres(documento);
 
         // verificar o tipo de pessoa pelo documento informado:
-        if (documento.length() > 12) {
+        if (documento.length() >= 12) {
             Pessoa pessoaNova = new PessoaJuridica(nome, documento);
             this.pessoas.add(pessoaNova);
         } else {
