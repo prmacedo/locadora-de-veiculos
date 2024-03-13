@@ -1,7 +1,15 @@
+import InterfaceUsuario.Menu;
+
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class Main extends Menu {
+    public static void main(String[] args) throws InterruptedException {
+
+//        Comentado para permitir funcionamento do resto do codigo
+//        while (true) {
+//            Menu.mostraMenu();
+//        }
+
         GerenciadorDeVeiculo gerenciadorDeVeiculo = new GerenciadorDeVeiculo();
         gerenciadorDeVeiculo.listarVeiculos();
 
@@ -37,7 +45,7 @@ public class Main {
         String placaNova = scanner.nextLine();
 
         String tipoNovo = null;
-        while(tipoNovo == null ||
+        while (tipoNovo == null ||
                 !(tipoNovo.isEmpty() || tipoNovo.equalsIgnoreCase("PEQUENO") ||
                 tipoNovo.equalsIgnoreCase("MEDIO") || tipoNovo.equalsIgnoreCase("SUV"))) {
             System.out.print("Informe o novo tipo do carro (PEQUENO, MEDIO ou SUV), ou enter para manter o mesmo: ");
