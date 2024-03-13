@@ -24,10 +24,4 @@ public abstract class Pessoa {
     public void setDocumento(String documento) {
         this.documento = documento;
     }
-
-    public static void cadastrarCliente() {
-    }
-
-    public static void alterarCliente() {
-    }
 }
