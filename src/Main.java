@@ -57,5 +57,38 @@ public class Main {
         }
 
         System.out.println(gerenciadorDeVeiculo.buscarVeiculo(termoDeBusca));
+
+        System.out.println();
+        System.out.println("----- Gerenciamndo de pessoas -----");
+        System.out.println();
+
+        GerenciadorDePessoa gerenciadorDePessoa = new GerenciadorDePessoa();
+        gerenciadorDePessoa.listarPessoas();
+        System.out.println("Cadastrando Pessoas...");
+        String nome = "";
+        while (nome.isEmpty()) {
+            System.out.print("Informe o nome: ");
+            nome = scanner.nextLine();
+        }
+
+        String doc = "";
+        while (doc.isEmpty() || (doc.length() == 12) || (doc.length() == 16)) {
+            System.out.print("Informe o CPF ou CNPJ: ");
+            doc = scanner.nextLine();
+        }
+
+        gerenciadorDePessoa.cadastrarPessoa(nome, doc);
+        gerenciadorDePessoa.listarPessoas();
+
+        System.out.println("Buscando documento..");
+        termoDeBusca = "";
+        while (termoDeBusca.isEmpty()) {
+            System.out.print("Informe o número do documento, ou parte dele, para pesquisar por Pessoa: ");
+            termoDeBusca = scanner.nextLine();
+        }
+        System.out.println(gerenciadorDePessoa.buscarPessoa(termoDeBusca));
+
+
+
     }
 }
