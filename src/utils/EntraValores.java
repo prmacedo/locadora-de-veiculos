@@ -13,7 +13,7 @@ public class EntraValores {
 
     public static String entradaString(String mensagem) {
         System.out.print(mensagem);
-        String valor = scanner.next();
+        String valor = scanner.nextLine();
         return valor;
     }
 
