@@ -1,7 +1,5 @@
 package pessoa;
 
-import veiculo.Veiculo;
-
 import java.util.Objects;
 
 public abstract class Pessoa {
