@@ -1,5 +1,5 @@
 package registro;
-
+import veiculo.Veiculo;
 import pessoa.*;
 import java.time.LocalDateTime;
 
@@ -9,6 +9,8 @@ public abstract class Registro {
     private LocalDateTime dataHora;
 
     private Pessoa cliente;
+
+    private Veiculo veiculo;
 
     public Registro(String local, LocalDateTime dataHora, Pessoa cliente) {
         this.local = local;
