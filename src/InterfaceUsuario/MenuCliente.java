@@ -1,13 +1,13 @@
 package InterfaceUsuario;
 
-import MenuVeiculos.GerenciaVeiculos;
+import MenuVeiculos.GerenciaClientes;
 
 public enum MenuCliente implements OpcaoMenu {
 
-    CADASTRAR_CLIENTE(GerenciaVeiculos::listaVeiculo),
-    BUSCAR_CLIENTE(GerenciaVeiculos::listaVeiculo),
-    LISTAR_CLIENTES(GerenciaVeiculos::listaVeiculo),
-    ALTERAR_CLIENTE(GerenciaVeiculos::listaVeiculo);
+    CADASTRAR_CLIENTE(GerenciaClientes::cadastraPessoa),
+    BUSCAR_CLIENTE(GerenciaClientes::buscaCliente),
+    LISTAR_CLIENTES(GerenciaClientes::listaPessoas),
+    ALTERAR_CLIENTE(GerenciaClientes::listaPessoas);
 
     private final Runnable acao;
 

@@ -15,7 +15,7 @@ public class GerenciaVeiculos {
     public static void cadastraVeiculo() {
         gerenciadorDeVeiculo.cadastrarVeiculo(
                 entradaString("Digite placa do veiculo: "),
-                entradaString("Digite o tipo do veiculo")
+                entradaString("Digite o tipo do veiculo: ")
         );
     }
 
