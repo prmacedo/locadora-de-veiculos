@@ -1,5 +1,6 @@
 package Gerenciadores;
 
+import veiculo.TipoVeiculo;
 import veiculo.Veiculo;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 public class GerenciadorDeVeiculo {
     private List<Veiculo> veiculos = new ArrayList<>();
 
-    public void cadastrarVeiculo(String placa, String tipo) {
+    public void cadastrarVeiculo(String placa, TipoVeiculo tipo) {
         if (this.veiculoExiste(placa) != null) {
             return;
         }
@@ -17,7 +18,7 @@ public class GerenciadorDeVeiculo {
         this.veiculos.add(veiculoNovo);
     }
 
-    public void alterarVeiculo(String placaAntiga, String placaNova, String tipoNovo) {
+    public void alterarVeiculo(String placaAntiga, String placaNova, TipoVeiculo tipoNovo) {
         Veiculo veiculoAlterar = this.veiculoExiste(placaAntiga);
 
         if (veiculoAlterar == null) {
@@ -35,7 +36,7 @@ public class GerenciadorDeVeiculo {
             veiculoAlterar.setPlaca(placaNova);
         }
 
-        if (!tipoNovo.trim().isEmpty()) {
+        if (tipoNovo != null) {
             veiculoAlterar.setTipo(tipoNovo);
         }
     }
@@ -58,6 +59,7 @@ public class GerenciadorDeVeiculo {
         for (Veiculo veiculo : this.veiculos) {
             System.out.println("| " + String.format("%11s", veiculo.getPlaca()) + " | " + String.format("%8s", veiculo.getTipo()) + " |");
         }
+        System.out.println();
     }
 
     private Veiculo veiculoExiste(String placa) {

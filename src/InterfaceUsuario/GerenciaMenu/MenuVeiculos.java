@@ -1,4 +1,4 @@
-package MenuVeiculos;
+package InterfaceUsuario.GerenciaMenu;
 
 import Gerenciadores.GerenciadorDeVeiculo;
 import veiculo.Veiculo;
@@ -6,8 +6,9 @@ import veiculo.Veiculo;
 import java.util.Scanner;
 
 import static utils.EntraValores.entradaString;
+import static utils.EntraValores.entradaTipoVeiculo;
 
-public class GerenciaVeiculos {
+public class MenuVeiculos {
     private static final GerenciadorDeVeiculo gerenciadorDeVeiculo = new GerenciadorDeVeiculo();
 
     static Scanner scanner = new Scanner(System.in);
@@ -15,7 +16,7 @@ public class GerenciaVeiculos {
     public static void cadastraVeiculo() {
         gerenciadorDeVeiculo.cadastrarVeiculo(
                 entradaString("Digite placa do veiculo: "),
-                entradaString("Digite o tipo do veiculo: ")
+                entradaTipoVeiculo("Escolha o tipo: ")
         );
     }
 
@@ -23,7 +24,7 @@ public class GerenciaVeiculos {
         gerenciadorDeVeiculo.alterarVeiculo(
                 entradaString("Placa antiga: "),
                 entradaString("Placa nova: "),
-                entradaString("Novo tipo: ")
+                entradaTipoVeiculo("Novo tipo: ")
         );
     }
 

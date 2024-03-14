@@ -1,13 +1,11 @@
-package MenuVeiculos;
+package InterfaceUsuario.GerenciaMenu;
 
 import Gerenciadores.GerenciadorDePessoa;
-import Gerenciadores.GerenciadorDeVeiculo;
 import pessoa.Pessoa;
-import veiculo.Veiculo;
 
 import static utils.EntraValores.entradaString;
 
-public class GerenciaClientes {
+public class MenuClientes {
 
     private static final GerenciadorDePessoa gerenciadorDePessoa = new GerenciadorDePessoa();
 

@@ -1,12 +1,12 @@
 package InterfaceUsuario;
 
-import MenuVeiculos.GerenciaVeiculos;
+import InterfaceUsuario.GerenciaMenu.MenuVeiculos;
 
 public enum MenuVeiculo implements OpcaoMenu {
-    CADASTRAR_VEICULOS(GerenciaVeiculos::cadastraVeiculo),
-    ALTERAR_VEICULO(GerenciaVeiculos::alteraVeiculo),
-    BUSCAR_VEICULO(GerenciaVeiculos::buscaVeiculo),
-    LISTAR_VEICULOS(GerenciaVeiculos::listaVeiculo);
+    CADASTRAR_VEICULOS(MenuVeiculos::cadastraVeiculo),
+    ALTERAR_VEICULO(MenuVeiculos::alteraVeiculo),
+    BUSCAR_VEICULO(MenuVeiculos::buscaVeiculo),
+    LISTAR_VEICULOS(MenuVeiculos::listaVeiculo);
 
 
 

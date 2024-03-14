@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Veiculo {
     private String placa;
-    private String tipo; // Talvez seja mais interessante trabalhar com herança
+    private TipoVeiculo tipo;
 
-    public Veiculo(String placa, String tipo) {
+    public Veiculo(String placa, TipoVeiculo tipo) {
         this.placa = placa.toUpperCase();
-        this.tipo = tipo.toUpperCase();
+        this.tipo = tipo;
     }
 
     public String getPlaca() {
@@ -19,12 +19,12 @@ public class Veiculo {
         this.placa = placa.toUpperCase();
     }
 
-    public String getTipo() {
+    public TipoVeiculo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo.toUpperCase();
+    public void setTipo(TipoVeiculo tipo) {
+        this.tipo = tipo;
     }
 
     @Override

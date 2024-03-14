@@ -1,5 +1,8 @@
 package InterfaceUsuario;
 
+import veiculo.TipoVeiculo;
+import veiculo.Veiculo;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -86,16 +89,29 @@ public class Menu {
 
     public static void menuClientes() {
         menuBase(MenuCliente.class, opcoesMenuCliente, "CLIENTE");
+        menuClientes();
 
     }
 
     public static void menuVeiculos() {
         menuBase(MenuVeiculo.class, opcoesMenuVeiculo, "VEICULO");
-
+        menuVeiculos();
     }
 
     public static void menuAluguel() {
         menuBase(MenuAluguel.class, opcoesMenuAluguel, "ALUGUEL");
+        menuAluguel();
+    }
+
+    public static void menuTipoVeiculo() {
+        TipoVeiculo[] tipos = TipoVeiculo.values();
+        ArrayList<String> opcoes = new ArrayList<>();
+
+        for (TipoVeiculo tipo : tipos) {
+            opcoes.add(tipo.name());
+        }
+
+        menuBase(TipoVeiculo.class, opcoes, " TIPOS ");
     }
 
     public static <T extends Enum<T> & OpcaoMenu> void menuBase(Class<T> enumClass, ArrayList<String> opcoes, String titulo) {

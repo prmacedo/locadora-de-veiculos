@@ -1,11 +1,11 @@
 package InterfaceUsuario;
 
-import MenuVeiculos.GerenciaVeiculos;
+import InterfaceUsuario.GerenciaMenu.MenuVeiculos;
 
 public enum MenuAluguel implements OpcaoMenu {
 
-    ALUGAR_VEICULO(GerenciaVeiculos::listaVeiculo),
-    DEVOLVER_VEICULO(GerenciaVeiculos::listaVeiculo);
+    ALUGAR_VEICULO(MenuVeiculos::listaVeiculo),
+    DEVOLVER_VEICULO(MenuVeiculos::listaVeiculo);
 
 
     private final Runnable acao;
