@@ -11,13 +11,30 @@ public class GerenciadorDePessoa {
         if (this.pessoaExiste(documento) != null) {
             return;
         }
+        //testar retorno da função
+        documento = removerCaracteres(documento);
+
         // verificar o tipo de pessoa pelo documento informado:
-        if (documento.length() > 12) {
+        if (documento.length() >= 12) {
             Pessoa pessoaNova = new PessoaJuridica(nome, documento);
             this.pessoas.add(pessoaNova);
         } else {
             Pessoa pessoaNova = new PessoaFisica(nome, documento);
             this.pessoas.add(pessoaNova);
+        }
+    }
+
+    public void alterarPessoa(String documentoAntigo, String documentoNovo, String nomeNovo) {
+        Pessoa documentoBuscado = this.pessoaExiste(documentoAntigo);
+        if (documentoBuscado == null) {
+            return;
+        }
+        documentoNovo = removerCaracteres(documentoNovo);
+        if (!documentoNovo.isEmpty()) {
+            documentoBuscado.setDocumento(documentoNovo);
+        }
+        if (!nomeNovo.trim().isEmpty()) {
+            documentoBuscado.setNome(nomeNovo);
         }
     }
     public Pessoa buscarPessoa(String termoDeBusca) {
@@ -42,6 +59,10 @@ public class GerenciadorDePessoa {
 
     private Pessoa pessoaExiste(String documento) {
         return this.pessoas.stream().filter(pessoa -> pessoa.getDocumento().equalsIgnoreCase(documento)).findFirst().orElse(null);
+    }
+
+    private String removerCaracteres (String documento) {
+        return documento.trim().replaceAll("[^0-9]", "");
     }
 
 }

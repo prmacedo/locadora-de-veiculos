@@ -16,18 +16,25 @@ public class GerenciadorDeVeiculo {
     }
 
     public void alterarVeiculo(String placaAntiga, String placaNova, String tipoNovo) {
-        Veiculo veiculoBuscado = this.veiculoExiste(placaAntiga);
+        Veiculo veiculoAlterar = this.veiculoExiste(placaAntiga);
 
-        if (veiculoBuscado == null) {
+        if (veiculoAlterar == null) {
+            return;
+        }
+
+        Veiculo veiculoComMesmaPlaca = this.veiculoExiste(placaNova);
+
+        if (veiculoComMesmaPlaca != null) {
+            System.out.println("Erro");
             return;
         }
 
         if (!placaNova.trim().isEmpty()) {
-            veiculoBuscado.setPlaca(placaNova);
+            veiculoAlterar.setPlaca(placaNova);
         }
 
         if (!tipoNovo.trim().isEmpty()) {
-            veiculoBuscado.setTipo(tipoNovo);
+            veiculoAlterar.setTipo(tipoNovo);
         }
     }
 
