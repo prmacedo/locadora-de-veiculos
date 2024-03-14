@@ -1,3 +1,5 @@
+package Gerenciadores;
+
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -18,7 +20,7 @@ public class GerenciadorDeRegistro {
             System.out.println("Veículo já está alugado");
             return;
         }
-        this.registros.add(new Aluguel(local, dataHora, cliente, veiculo);
+        this.registros.add(new Aluguel(local, dataHora, cliente, veiculo));
     }
 
     private boolean estaAlugado(Veiculo veiculo) {
@@ -30,7 +32,7 @@ public class GerenciadorDeRegistro {
             System.out.println("Veículo não está alugado!");
             return;
         }
-        this.registros.add(new Devolucao(local, dataHora, cliente, veiculo))
+        this.registros.add(new Devolucao(local, dataHora, cliente, veiculo));
     }
 
     public List<Registro> buscarRegistros(Veiculo veiculo){

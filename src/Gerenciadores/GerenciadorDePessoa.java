@@ -1,3 +1,5 @@
+package Gerenciadores;
+
 import pessoa.Pessoa;
 import pessoa.PessoaFisica;
 import pessoa.PessoaJuridica;

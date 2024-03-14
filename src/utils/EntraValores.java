@@ -8,18 +8,19 @@ public class EntraValores {
     public static int entradaInt(String mensagem) {
         System.out.print(mensagem);
         int valor = scanner.nextInt();
+        scanner.nextLine();
         return valor;
     }
 
     public static String entradaString(String mensagem) {
-        System.out.print(mensagem);
-        String valor = scanner.nextLine();
-        return valor;
+        System.out.println(mensagem);
+        return scanner.nextLine();
     }
 
     public static double entradaDouble(String mensagem) {
         System.out.print(mensagem);
         double valor = scanner.nextDouble();
+        scanner.nextLine();
         return valor;
     }
 }
