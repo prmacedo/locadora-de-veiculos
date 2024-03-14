@@ -37,7 +37,7 @@ public abstract class Pessoa {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Pessoa pessoa = (Pessoa) obj;
-        return Objects.equals(documento, pessoa.documento.toUpperCase());
+        return Objects.equals(documento, pessoa.documento);
     }
 
 }
