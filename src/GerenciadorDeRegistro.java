@@ -1,9 +1,9 @@
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import registro.*;
 import pessoa.*;
 import veiculo.*;
-
 
 public class GerenciadorDeRegistro {
 
@@ -42,7 +42,13 @@ public class GerenciadorDeRegistro {
         }
         return registrosEncontrados;
     }
+                           
+    private int calcularDiarias(Aluguel aluguel, Devolucao devolucao) {
+        long diferencaEmMinutos = aluguel.getDataHora().until(devolucao.getDataHora(), ChronoUnit.MINUTES);
+        double diferencaEmDias = diferencaEmMinutos / 1440d;
+        double diasArredondados = Math.ceil(diferencaEmDias);
 
-
+        return (int) diasArredondados;
+    }
 
 }
