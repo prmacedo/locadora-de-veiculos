@@ -6,9 +6,8 @@ public class PessoaFisica extends Pessoa{
     }
     @Override
     public String toString() {
-        return "Pessoa Física{" +
-                "nome='" + nome + '\'' +
-                ", documento='" + documento + '\'' +
-                '}';
+        return "Pessoa Física: " +
+                "nome: " + nome + "\n" +
+                "documento: " + documento + "\n";
     }
 }
