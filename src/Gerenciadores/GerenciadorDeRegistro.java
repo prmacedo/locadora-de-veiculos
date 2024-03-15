@@ -3,9 +3,13 @@ package Gerenciadores;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+
+import InterfaceUsuario.Menu;
 import registro.*;
 import pessoa.*;
 import veiculo.*;
+
+import static InterfaceUsuario.Menu.limpaTela;
 
 public class GerenciadorDeRegistro {
 
@@ -42,7 +46,17 @@ public class GerenciadorDeRegistro {
                 registrosEncontrados.add(registro);
             }
         }
-        return registrosEncontrados;
+        if (registrosEncontrados.size() <= 0) {
+            System.out.println("Nenhum registro encontrado!");
+            try {
+                Thread.sleep(3000);
+                limpaTela();
+                Menu.menuAluguel();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+            return registrosEncontrados;
     }
                            
     private int calcularDiarias(Aluguel aluguel, Devolucao devolucao) {

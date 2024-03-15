@@ -30,7 +30,9 @@ public class Menu {
 
     static ArrayList<String> opcoesMenuAluguel = new ArrayList<>(Arrays.asList(
             "Alugar Veiculo",
-            "Devolver Veiculo"
+            "Devolver Veiculo",
+            "Buscar Registro",
+            "Calcular Diaria"
     ));
 
     public static void menuPrincipal() {

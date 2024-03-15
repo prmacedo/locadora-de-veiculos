@@ -2,6 +2,8 @@ package utils;
 
 import veiculo.TipoVeiculo;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -58,5 +60,20 @@ public class EntraValores {
         } while (opcao < 1 || opcao > tipos.length);
 
         return tipos[opcao - 1];
+    }
+
+    public static LocalDateTime entradaLocalDateTime(String mensagem) {
+        LocalDateTime dataHora;
+        do {
+            try {
+                System.out.print(mensagem);
+                String input = scanner.nextLine();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                dataHora = LocalDateTime.parse(input, formatter);
+                return dataHora;
+            } catch (Exception e) {
+                System.out.println("Entrada inválida! Por favor, digite a data e hora no formato correto (yyyy-MM-dd HH:mm:ss).");
+            }
+        } while (true);
     }
 }
