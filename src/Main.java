@@ -6,6 +6,29 @@ import java.util.Scanner;
 
 public class Main extends Menu {
     public static void main(String[] args) throws InterruptedException {
+//        GerenciadorDePessoa gerenciadorDePessoa = new GerenciadorDePessoa();
+//        gerenciadorDePessoa.cadastrarPessoa("Joao1", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao2", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao3", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao4", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao5", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao6", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao7", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao8", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao9", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao10", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao1", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao12", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao13", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao14", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao15", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao16", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao17", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao18", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao19", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao20", "12345678912");
+//        gerenciadorDePessoa.cadastrarPessoa("Joao21", "12345678912");
+//        gerenciadorDePessoa.listarPessoas();
 
 //        Comentado para permitir funcionamento do resto do codigo
         while (true) {

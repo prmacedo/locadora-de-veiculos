@@ -1,22 +1,30 @@
 package Gerenciadores;
 
+import InterfaceUsuario.Menu;
 import pessoa.Pessoa;
 import pessoa.PessoaFisica;
 import pessoa.PessoaJuridica;
+import utils.Paginacao;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
+import static InterfaceUsuario.Menu.limpaTela;
 
 public class GerenciadorDePessoa {
     private List<Pessoa> pessoas = new ArrayList<>();
+
+    private int resultadosPorPagina = 5;
+    private int paginaAtual = 1;
 
     public void cadastrarPessoa(String nome, String documento) {
         if (this.pessoaExiste(documento) != null) {
             return;
         }
-        //testar retorno da função
+
         documento = removerCaracteres(documento);
 
-        // verificar o tipo de pessoa pelo documento informado:
         if (documento.length() >= 12) {
             Pessoa pessoaNova = new PessoaJuridica(nome, documento);
             this.pessoas.add(pessoaNova);
@@ -39,6 +47,7 @@ public class GerenciadorDePessoa {
             documentoBuscado.setNome(nomeNovo);
         }
     }
+
     public Pessoa buscarPessoa(String termoDeBusca) {
         return this.pessoas.stream()
                 .filter(pessoa -> pessoa.getDocumento().contains(termoDeBusca.toUpperCase()))
@@ -46,25 +55,24 @@ public class GerenciadorDePessoa {
     }
 
     public void listarPessoas() {
-        if (this.pessoas.isEmpty()) {
-            System.out.println("Ainda não há pessoas cadastradas.");
-            return;
+        if (pessoas.size() <= 0) {
+            System.out.println("Nenhum cliente cadastrado!");
+            try {
+                Thread.sleep(3000);
+                limpaTela();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+            Menu.menuClientes();
         }
-
-        System.out.println("|    Documento    |       Nome      ");
-        System.out.println("| --------------- | --------------- ");
-
-        for (Pessoa pessoa : this.pessoas) {
-            System.out.println("| " + String.format("%15s", pessoa.getDocumento()) + " | " + String.format("%15s", pessoa.getNome()));
-        }
+        Paginacao.paginando(pessoas, 5);
     }
 
     private Pessoa pessoaExiste(String documento) {
         return this.pessoas.stream().filter(pessoa -> pessoa.getDocumento().equalsIgnoreCase(documento)).findFirst().orElse(null);
     }
 
-    private String removerCaracteres (String documento) {
+    private String removerCaracteres(String documento) {
         return documento.trim().replaceAll("[^0-9]", "");
     }
-
 }

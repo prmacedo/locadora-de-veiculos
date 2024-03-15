@@ -2,16 +2,25 @@ package utils;
 
 import veiculo.TipoVeiculo;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EntraValores {
     static Scanner scanner = new Scanner(System.in);
 
     public static int entradaInt(String mensagem) {
-        System.out.print(mensagem);
-        int valor = scanner.nextInt();
-        scanner.nextLine();
-        return valor;
+        int valor;
+        do {
+            try {
+                System.out.print(mensagem);
+                valor = scanner.nextInt();
+                scanner.nextLine();
+                return valor;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada invalida!\nPor favor, digite um numero valido.");
+                scanner.nextLine();
+            }
+        } while (true);
     }
 
     public static String entradaString(String mensagem) {
@@ -20,10 +29,18 @@ public class EntraValores {
     }
 
     public static double entradaDouble(String mensagem) {
-        System.out.print(mensagem);
-        double valor = scanner.nextDouble();
-        scanner.nextLine();
-        return valor;
+        double valor;
+        do {
+            try {
+                System.out.print(mensagem);
+                valor = scanner.nextDouble();
+                scanner.nextLine();
+                return valor;
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida! Por favor, digite um número decimal.");
+                scanner.nextLine();
+            }
+        } while (true);
     }
 
     public static TipoVeiculo entradaTipoVeiculo(String mensagem) {

@@ -1,8 +1,5 @@
 package InterfaceUsuario;
 
-import veiculo.TipoVeiculo;
-import veiculo.Veiculo;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -75,7 +72,7 @@ public class Menu {
     }
 
 
-    protected static void limpaTela() {
+    public static void limpaTela() {
         System.out.print("\u001b[H\u001b[2J");
         System.out.flush();
         System.out.println();
@@ -103,17 +100,6 @@ public class Menu {
         menuAluguel();
     }
 
-    public static void menuTipoVeiculo() {
-        TipoVeiculo[] tipos = TipoVeiculo.values();
-        ArrayList<String> opcoes = new ArrayList<>();
-
-        for (TipoVeiculo tipo : tipos) {
-            opcoes.add(tipo.name());
-        }
-
-        menuBase(TipoVeiculo.class, opcoes, " TIPOS ");
-    }
-
     public static <T extends Enum<T> & OpcaoMenu> void menuBase(Class<T> enumClass, ArrayList<String> opcoes, String titulo) {
         T[] values = enumClass.getEnumConstants();
 
@@ -125,7 +111,7 @@ public class Menu {
         System.out.println("|    " + (values.length + 1) + " - " + String.format("%-22s", "Menu Principal") + " |");
         System.out.println("|    " + "0" + " - " + String.format("%-22s", "SAIR") + " |");
         System.out.println("---------------------------------");
-        opcao = entradaInt("Escolha a opção: ");
+        opcao = entradaInt("Escolha a opcao: ");
         if (opcao == 0) sair();
         if (opcao == values.length + 1) {
             menuPrincipal();
@@ -134,7 +120,7 @@ public class Menu {
         if (opcao >= 1 && opcao <= values.length) {
             values[opcao - 1].executar();
         } else {
-            System.out.println("Opção inválida!");
+            System.out.println("Opcao invalida!");
             try {
                 Thread.sleep(3000);
                 limpaTela();
