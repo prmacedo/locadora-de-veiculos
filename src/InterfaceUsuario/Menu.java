@@ -23,9 +23,10 @@ public class Menu {
 
     static ArrayList<String> opcoesMenuCliente = new ArrayList<>(Arrays.asList(
             "Cadastrar Cliente",
+            "Alterar Cliente",
             "Buscar Cliente",
-            "Listar Cliente",
-            "Alterar Cliente"
+            "Listar Cliente"
+
     ));
 
     static ArrayList<String> opcoesMenuAluguel = new ArrayList<>(Arrays.asList(

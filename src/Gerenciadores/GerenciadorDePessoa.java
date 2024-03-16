@@ -1,6 +1,7 @@
 package Gerenciadores;
 
 import InterfaceUsuario.Menu;
+import arquivosDB.ArquivoClientes;
 import pessoa.Pessoa;
 import pessoa.PessoaFisica;
 import pessoa.PessoaJuridica;
@@ -8,7 +9,6 @@ import utils.Paginacao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static InterfaceUsuario.Menu.limpaTela;
 
@@ -18,13 +18,15 @@ public class GerenciadorDePessoa {
     private int resultadosPorPagina = 5;
     private int paginaAtual = 1;
 
+    public GerenciadorDePessoa(){
+        ArquivoClientes.carregarPessoas(pessoas);
+    }
+
     public void cadastrarPessoa(String nome, String documento) {
         if (this.pessoaExiste(documento) != null) {
             return;
         }
-
         documento = removerCaracteres(documento);
-
         if (documento.length() >= 12) {
             Pessoa pessoaNova = new PessoaJuridica(nome, documento);
             this.pessoas.add(pessoaNova);
@@ -32,6 +34,7 @@ public class GerenciadorDePessoa {
             Pessoa pessoaNova = new PessoaFisica(nome, documento);
             this.pessoas.add(pessoaNova);
         }
+        ArquivoClientes.salvarPessoa(pessoas);
     }
 
     public void alterarPessoa(String documentoAntigo, String documentoNovo, String nomeNovo) {
@@ -49,6 +52,8 @@ public class GerenciadorDePessoa {
         if (!nomeNovo.trim().isEmpty()) {
             documentoBuscado.setNome(nomeNovo);
         }
+        System.out.println(documentoBuscado.toString());
+        ArquivoClientes.salvarPessoa(pessoas);
     }
 
     public Pessoa buscarPessoa(String termoDeBusca) {
