@@ -1,6 +1,7 @@
 package Gerenciadores;
 
 import InterfaceUsuario.Menu;
+import arquivosDB.ArquivoVeiculos;
 import utils.Paginacao;
 import veiculo.TipoVeiculo;
 import veiculo.Veiculo;
@@ -13,12 +14,19 @@ import static InterfaceUsuario.Menu.limpaTela;
 public class GerenciadorDeVeiculo {
     private static List<Veiculo> veiculos = new ArrayList<>();
 
-    public static boolean cadastrarVeiculo(Veiculo veiculo) {
-        if (veiculoExiste(veiculo) != null) {
-            return false;
+    public GerenciadorDeVeiculo() {
+        ArquivoVeiculos.carregarVeiculos(veiculos);
+    }
+
+    public static boolean cadastrarVeiculo(String placa, TipoVeiculo tipo) {
+        if (this.veiculoExiste(placa) != null) {
+           return false;
         }
 
-        veiculos.add(veiculo);
+        Veiculo veiculoNovo = new Veiculo(placa, tipo);
+        this.veiculos.add(veiculoNovo);
+        ArquivoVeiculos.salvarVeiculo(veiculos);
+
         return true;
     }
 
@@ -38,6 +46,10 @@ public class GerenciadorDeVeiculo {
         veiculoAAlterar.setPlaca(veiculoNovo.getPlaca());
         veiculoAAlterar.setTipo(veiculoNovo.getTipo());
 
+        if (tipoNovo != null) {
+            veiculoAlterar.setTipo(tipoNovo);
+        }
+        ArquivoVeiculos.salvarVeiculo(veiculos);
         return true;
     }
 

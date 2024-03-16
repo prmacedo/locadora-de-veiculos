@@ -3,6 +3,7 @@ package pessoa;
 public class PessoaFisica extends Pessoa{
     public PessoaFisica(String nome, String documento) {
         super(nome, documento);
+        this.setTipo("PF");
     }
     @Override
     public String toString() {

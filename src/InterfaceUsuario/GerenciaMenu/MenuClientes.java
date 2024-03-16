@@ -31,4 +31,12 @@ public class MenuClientes {
         gerenciadorDePessoa.listarPessoas();
 
     }
+
+    public static void alteraCliente() {
+                gerenciadorDePessoa.alterarPessoa(
+                        entradaString("Digite documento antigo: "),
+                        entradaString("Digite documento novo: "),
+                        entradaString("Digite novo nome: ")
+        );
+    }
 }
