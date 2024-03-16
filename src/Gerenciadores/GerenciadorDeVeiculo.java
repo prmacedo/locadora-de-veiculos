@@ -1,12 +1,19 @@
+package Gerenciadores;
+
+import InterfaceUsuario.Menu;
+import utils.Paginacao;
+import veiculo.TipoVeiculo;
 import veiculo.Veiculo;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static InterfaceUsuario.Menu.limpaTela;
+
 public class GerenciadorDeVeiculo {
     private List<Veiculo> veiculos = new ArrayList<>();
 
-    public void cadastrarVeiculo(String placa, String tipo) {
+    public void cadastrarVeiculo(String placa, TipoVeiculo tipo) {
         if (this.veiculoExiste(placa) != null) {
             return;
         }
@@ -15,7 +22,7 @@ public class GerenciadorDeVeiculo {
         this.veiculos.add(veiculoNovo);
     }
 
-    public void alterarVeiculo(String placaAntiga, String placaNova, String tipoNovo) {
+    public void alterarVeiculo(String placaAntiga, String placaNova, TipoVeiculo tipoNovo) {
         Veiculo veiculoAlterar = this.veiculoExiste(placaAntiga);
 
         if (veiculoAlterar == null) {
@@ -33,7 +40,7 @@ public class GerenciadorDeVeiculo {
             veiculoAlterar.setPlaca(placaNova);
         }
 
-        if (!tipoNovo.trim().isEmpty()) {
+        if (tipoNovo != null) {
             veiculoAlterar.setTipo(tipoNovo);
         }
     }
@@ -46,19 +53,20 @@ public class GerenciadorDeVeiculo {
 
     public void listarVeiculos() {
         if (this.veiculos.isEmpty()) {
-            System.out.println("Ainda não há veículos cadastrados.");
-            return;
+            System.out.println("Nenhum veiculo cadastrado!");
+            try {
+                Thread.sleep(3000);
+                limpaTela();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+            Menu.menuVeiculos();
         }
-
-        System.out.println("|    PLACA    |   TIPO   |");
-        System.out.println("| ----------- | -------- |");
-
-        for (Veiculo veiculo : this.veiculos) {
-            System.out.println("| " + String.format("%11s", veiculo.getPlaca()) + " | " + String.format("%8s", veiculo.getTipo()) + " |");
-        }
+        Paginacao.paginando(this.veiculos,5);
     }
 
-    private Veiculo veiculoExiste(String placa) {
-        return this.veiculos.stream().filter(veiculo -> veiculo.getPlaca().equalsIgnoreCase(placa)).findFirst().orElse(null);
-    }
+
+private Veiculo veiculoExiste(String placa) {
+    return this.veiculos.stream().filter(veiculo -> veiculo.getPlaca().equalsIgnoreCase(placa)).findFirst().orElse(null);
+}
 }
