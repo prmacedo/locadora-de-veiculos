@@ -13,43 +13,37 @@ import static InterfaceUsuario.Menu.limpaTela;
 public class GerenciadorDeVeiculo {
     private static List<Veiculo> veiculos = new ArrayList<>();
 
-    public static boolean cadastrarVeiculo(String placa, TipoVeiculo tipo) {
-        if (veiculoExiste(placa) != null) {
+    public static boolean cadastrarVeiculo(Veiculo veiculo) {
+        if (veiculoExiste(veiculo) != null) {
             return false;
         }
 
-        Veiculo veiculoNovo = new Veiculo(placa, tipo);
-        veiculos.add(veiculoNovo);
+        veiculos.add(veiculo);
         return true;
     }
 
-    public static boolean alterarVeiculo(String placaAntiga, String placaNova, TipoVeiculo tipoNovo) {
-        Veiculo veiculoAlterar = veiculoExiste(placaAntiga);
+    public static boolean alterarVeiculo(String placaAntiga, Veiculo veiculoNovo) {
+        Veiculo veiculoAAlterar = veiculoExiste(new Veiculo(placaAntiga));
 
-        if (veiculoAlterar == null) {
+        if (veiculoAAlterar == null) {
             return false;
         }
 
-        Veiculo veiculoComMesmaPlaca = veiculoExiste(placaNova);
+        Veiculo veiculoComMesmaPlaca = veiculoExiste(veiculoNovo);
 
         if (veiculoComMesmaPlaca != null) {
             return false;
         }
 
-        if (!placaNova.trim().isEmpty()) {
-            veiculoAlterar.setPlaca(placaNova);
-        }
-
-        if (tipoNovo != null) {
-            veiculoAlterar.setTipo(tipoNovo);
-        }
+        veiculoAAlterar.setPlaca(veiculoNovo.getPlaca());
+        veiculoAAlterar.setTipo(veiculoNovo.getTipo());
 
         return true;
     }
 
     public static Veiculo buscarVeiculo(String termoDeBusca) {
         return veiculos.stream()
-                .filter(veiculo -> veiculo.getPlaca().contains(termoDeBusca.toUpperCase()))
+                .filter(veiculo -> veiculo.getPlaca().contains(termoDeBusca.toUpperCase().trim()))
                 .findFirst().orElse(null);
     }
 
@@ -58,7 +52,7 @@ public class GerenciadorDeVeiculo {
     }
 
 
-    private static Veiculo veiculoExiste(String placa) {
-        return veiculos.stream().filter(veiculo -> veiculo.getPlaca().equalsIgnoreCase(placa)).findFirst().orElse(null);
+    private static Veiculo veiculoExiste(Veiculo veiculoProcurado) {
+        return veiculos.stream().filter(veiculo -> veiculo.equals(veiculoProcurado)).findFirst().orElse(null);
     }
 }

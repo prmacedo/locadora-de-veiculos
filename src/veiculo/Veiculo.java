@@ -6,8 +6,12 @@ public class Veiculo {
     private String placa;
     private TipoVeiculo tipo;
 
+    public Veiculo(String placa) {
+        this.placa = placa.toUpperCase().trim();
+    }
+
     public Veiculo(String placa, TipoVeiculo tipo) {
-        this.placa = placa.toUpperCase();
+        this(placa);
         this.tipo = tipo;
     }
 
@@ -16,7 +20,7 @@ public class Veiculo {
     }
 
     public void setPlaca(String placa) {
-        this.placa = placa.toUpperCase();
+        this.placa = placa.toUpperCase().trim();
     }
 
     public TipoVeiculo getTipo() {
@@ -32,7 +36,7 @@ public class Veiculo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Veiculo veiculo = (Veiculo) o;
-        return Objects.equals(placa, veiculo.placa.toUpperCase());
+        return Objects.equals(placa, veiculo.placa);
     }
 
     @Override

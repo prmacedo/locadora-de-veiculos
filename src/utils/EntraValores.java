@@ -31,10 +31,10 @@ public class EntraValores {
     }
 
     public static String entradaStringNotEmpty(String mensagem) {
-        System.out.println(mensagem);
         String value = "";
 
         while (value.isEmpty()) {
+            System.out.print(mensagem);
             value = scanner.nextLine();
         }
 

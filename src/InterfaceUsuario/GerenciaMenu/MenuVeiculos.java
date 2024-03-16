@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import static InterfaceUsuario.Menu.limpaTela;
-import static utils.EntraValores.entradaString;
 import static utils.EntraValores.entradaStringNotEmpty;
 import static utils.EntraValores.entradaTipoVeiculo;
 
@@ -21,17 +20,17 @@ public class MenuVeiculos {
         String placa = entradaStringNotEmpty("Digite placa do veiculo: ");
         TipoVeiculo tipo = entradaTipoVeiculo("Escolha o tipo: ");
 
-        boolean veiculoCadastrado = GerenciadorDeVeiculo.cadastrarVeiculo(placa, tipo);
+        boolean veiculoCadastrado = GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo(placa, tipo));
 
         System.out.println(veiculoCadastrado ? "Veículo cadastrado com sucesso!" : "Erro ao cadastrar veículo.");
     }
 
     public static void alteraVeiculo() {
         String placaAntiga = entradaStringNotEmpty("Placa antiga: ");
-        String placaNova = entradaString("Placa nova: ");
+        String placaNova = entradaStringNotEmpty("Placa nova: ");
         TipoVeiculo tipoNovo = entradaTipoVeiculo("Novo tipo: ");
 
-        boolean veiculoAlterado = GerenciadorDeVeiculo.alterarVeiculo(placaAntiga, placaNova, tipoNovo);
+        boolean veiculoAlterado = GerenciadorDeVeiculo.alterarVeiculo(placaAntiga, new Veiculo(placaNova, tipoNovo));
 
         System.out.println(veiculoAlterado ? "Veículo alterado com sucesso!" : "Erro ao alterar veículo.");
     }
