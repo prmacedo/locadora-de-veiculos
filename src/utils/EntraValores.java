@@ -30,6 +30,17 @@ public class EntraValores {
         return scanner.nextLine();
     }
 
+    public static String entradaStringNotEmpty(String mensagem) {
+        String value = "";
+
+        while (value.isEmpty()) {
+            System.out.print(mensagem);
+            value = scanner.nextLine();
+        }
+
+        return value;
+    }
+
     public static double entradaDouble(String mensagem) {
         double valor;
         do {
@@ -48,7 +59,7 @@ public class EntraValores {
     public static TipoVeiculo entradaTipoVeiculo(String mensagem) {
         System.out.println(mensagem);
         TipoVeiculo[] tipos = TipoVeiculo.values();
-            System.out.println("----- TIPO VEICULO -----");
+        System.out.println("----- TIPO VEICULO -----");
         for (int i = 0; i < tipos.length; i++) {
             System.out.println((i + 1) + ". " + tipos[i]);
         }

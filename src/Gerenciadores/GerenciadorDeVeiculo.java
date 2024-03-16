@@ -11,62 +11,48 @@ import java.util.List;
 import static InterfaceUsuario.Menu.limpaTela;
 
 public class GerenciadorDeVeiculo {
-    private List<Veiculo> veiculos = new ArrayList<>();
+    private static List<Veiculo> veiculos = new ArrayList<>();
 
-    public void cadastrarVeiculo(String placa, TipoVeiculo tipo) {
-        if (this.veiculoExiste(placa) != null) {
-            return;
+    public static boolean cadastrarVeiculo(Veiculo veiculo) {
+        if (veiculoExiste(veiculo) != null) {
+            return false;
         }
 
-        Veiculo veiculoNovo = new Veiculo(placa, tipo);
-        this.veiculos.add(veiculoNovo);
+        veiculos.add(veiculo);
+        return true;
     }
 
-    public void alterarVeiculo(String placaAntiga, String placaNova, TipoVeiculo tipoNovo) {
-        Veiculo veiculoAlterar = this.veiculoExiste(placaAntiga);
+    public static boolean alterarVeiculo(String placaAntiga, Veiculo veiculoNovo) {
+        Veiculo veiculoAAlterar = veiculoExiste(new Veiculo(placaAntiga));
 
-        if (veiculoAlterar == null) {
-            return;
+        if (veiculoAAlterar == null) {
+            return false;
         }
 
-        Veiculo veiculoComMesmaPlaca = this.veiculoExiste(placaNova);
+        Veiculo veiculoComMesmaPlaca = veiculoExiste(veiculoNovo);
 
         if (veiculoComMesmaPlaca != null) {
-            System.out.println("Erro");
-            return;
+            return false;
         }
 
-        if (!placaNova.trim().isEmpty()) {
-            veiculoAlterar.setPlaca(placaNova);
-        }
+        veiculoAAlterar.setPlaca(veiculoNovo.getPlaca());
+        veiculoAAlterar.setTipo(veiculoNovo.getTipo());
 
-        if (tipoNovo != null) {
-            veiculoAlterar.setTipo(tipoNovo);
-        }
+        return true;
     }
 
-    public Veiculo buscarVeiculo(String termoDeBusca) {
-        return this.veiculos.stream()
-                .filter(veiculo -> veiculo.getPlaca().contains(termoDeBusca.toUpperCase()))
+    public static Veiculo buscarVeiculo(String termoDeBusca) {
+        return veiculos.stream()
+                .filter(veiculo -> veiculo.getPlaca().contains(termoDeBusca.toUpperCase().trim()))
                 .findFirst().orElse(null);
     }
 
-    public void listarVeiculos() {
-        if (this.veiculos.isEmpty()) {
-            System.out.println("Nenhum veiculo cadastrado!");
-            try {
-                Thread.sleep(3000);
-                limpaTela();
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
-            Menu.menuVeiculos();
-        }
-        Paginacao.paginando(this.veiculos,5);
+    public static List<Veiculo> obterVeiculos() {
+        return veiculos;
     }
 
 
-private Veiculo veiculoExiste(String placa) {
-    return this.veiculos.stream().filter(veiculo -> veiculo.getPlaca().equalsIgnoreCase(placa)).findFirst().orElse(null);
-}
+    private static Veiculo veiculoExiste(Veiculo veiculoProcurado) {
+        return veiculos.stream().filter(veiculo -> veiculo.equals(veiculoProcurado)).findFirst().orElse(null);
+    }
 }
