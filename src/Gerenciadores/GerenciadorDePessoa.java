@@ -40,6 +40,9 @@ public class GerenciadorDePessoa {
             return;
         }
         documentoNovo = removerCaracteres(documentoNovo);
+        if (documentoAntigo.equals(documentoNovo) && this.pessoaExiste(documentoNovo) != null) {
+            return;
+        }
         if (!documentoNovo.isEmpty()) {
             documentoBuscado.setDocumento(documentoNovo);
         }
@@ -50,7 +53,7 @@ public class GerenciadorDePessoa {
 
     public Pessoa buscarPessoa(String termoDeBusca) {
         return this.pessoas.stream()
-                .filter(pessoa -> pessoa.getDocumento().contains(termoDeBusca.toUpperCase()))
+                .filter(pessoa -> pessoa.getDocumento().contains(removerCaracteres(termoDeBusca)))
                 .findFirst().orElse(null);
     }
 
