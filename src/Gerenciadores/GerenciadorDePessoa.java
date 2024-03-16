@@ -52,7 +52,6 @@ public class GerenciadorDePessoa {
         if (!nomeNovo.trim().isEmpty()) {
             documentoBuscado.setNome(nomeNovo);
         }
-        System.out.println(documentoBuscado.toString());
         ArquivoClientes.salvarPessoa(pessoas);
     }
 
