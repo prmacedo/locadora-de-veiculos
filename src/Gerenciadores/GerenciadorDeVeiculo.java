@@ -4,7 +4,6 @@ import arquivosDB.ArquivoVeiculos;
 import veiculo.Veiculo;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class GerenciadorDeVeiculo {
     private static List<Veiculo> veiculos = ArquivoVeiculos.carregarVeiculos();
@@ -41,9 +40,15 @@ public class GerenciadorDeVeiculo {
         return true;
     }
 
-    public static Veiculo buscarVeiculo(String termoDeBusca) {
+    public static Veiculo buscarVeiculoPorParteDaPlaca(String termoDeBusca) {
         return veiculos.stream()
                 .filter(veiculo -> veiculo.getPlaca().contains(termoDeBusca.toUpperCase().trim()))
+                .findFirst().orElse(null);
+    }
+
+    public static Veiculo buscarVeiculo(Veiculo veiculoBuscado) {
+        return veiculos.stream()
+                .filter(veiculo -> veiculo.equals(veiculoBuscado))
                 .findFirst().orElse(null);
     }
 

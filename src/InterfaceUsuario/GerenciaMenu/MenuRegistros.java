@@ -25,7 +25,7 @@ public class MenuRegistros {
         Pessoa cliente = GerenciadorDePessoa.buscarPessoa(documentoCliente);
 
         String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
-        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
+        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(new Veiculo(placaVeiculo));
 
         Aluguel aluguel = new Aluguel(local, dataHora, cliente, veiculo);
 
@@ -42,7 +42,7 @@ public class MenuRegistros {
         Pessoa cliente = GerenciadorDePessoa.buscarPessoa(documentoCliente);
 
         String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
-        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
+        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(new Veiculo(placaVeiculo));
 
         Devolucao devolucao = new Devolucao(local, dataHora, cliente, veiculo);
 
@@ -62,7 +62,7 @@ public class MenuRegistros {
 
     public static void buscaRegitro() {
         String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
-        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
+        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculoPorParteDaPlaca(placaVeiculo);
 
         List<Registro> registros = GerenciadorDeRegistro.buscarRegistros(veiculo);
 

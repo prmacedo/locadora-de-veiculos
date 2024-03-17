@@ -38,7 +38,7 @@ public class MenuVeiculos {
     public static void buscaVeiculo() {
         String termoDeBusca = entradaStringNotEmpty("Digite o termo para busca: ");
 
-        Veiculo veiculoEncontrado = GerenciadorDeVeiculo.buscarVeiculo(termoDeBusca);
+        Veiculo veiculoEncontrado = GerenciadorDeVeiculo.buscarVeiculoPorParteDaPlaca(termoDeBusca);
 
         if (veiculoEncontrado != null) {
             System.out.println("Veículo encontrado: \n" + veiculoEncontrado);
