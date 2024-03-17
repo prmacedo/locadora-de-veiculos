@@ -12,14 +12,16 @@ import registro.Registro;
 import veiculo.Veiculo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
+import static gerenciaDB.ArquivoRegistro.carregarRegistrosGerais;
 import static utils.EntraValores.*;
 
 public class MenuRegistros {
     public static void alugaVeiculo() {
         String local = entradaStringNotEmpty("Digite o local: ");
-        LocalDateTime dataHora = entradaLocalDateTime("Digite a data: ");
+        LocalDateTime dataHora = entradaLocalDateTime("Digite a data (dd-mm-aaaa hh:mm): ");
 
         String documentoCliente = entradaStringNotEmpty("Digite o documento do cliente: ");
         Pessoa cliente = GerenciadorDePessoa.buscarPessoa(documentoCliente);
@@ -37,7 +39,7 @@ public class MenuRegistros {
             return;
         }
 
-        Aluguel aluguel = new Aluguel(local, dataHora, cliente, veiculo);
+        Aluguel aluguel = new Aluguel(local, dataHora, cliente, veiculo, true);
 
         boolean veiculoAlugado = GerenciadorDeRegistro.alugarVeiculo(aluguel);
 
@@ -46,7 +48,7 @@ public class MenuRegistros {
 
     public static void devolveVeiculo() {
         String local = entradaStringNotEmpty("Digite o local: ");
-        LocalDateTime dataHora = entradaLocalDateTime("Digite a data: ");
+        LocalDateTime dataHora = entradaLocalDateTime("Digite a data (dd-mm-aaaa hh:mm): ");
 
         String documentoCliente = entradaStringNotEmpty("Digite o documento do cliente: ");
         Pessoa cliente = GerenciadorDePessoa.buscarPessoa(documentoCliente);
@@ -70,10 +72,10 @@ public class MenuRegistros {
             return;
         }
 
-        Devolucao devolucao = new Devolucao(local, dataHora, cliente, veiculo);
+        Devolucao devolucao = new Devolucao(local, dataHora, cliente, veiculo, false);
 
 
-        boolean devolucaoRealizada = GerenciadorDeRegistro.devolverVeiculo(devolucao, aluguel);
+        boolean devolucaoRealizada = GerenciadorDeRegistro.devolverVeiculo(devolucao);
 
         if (devolucaoRealizada) {
             int diarias = GerenciadorDeRegistro.calcularDiarias(aluguel, devolucao);
@@ -88,17 +90,23 @@ public class MenuRegistros {
 
     public static void buscaRegitro() {
         String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
-        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
 
-        List<Registro> registros = GerenciadorDeRegistro.buscarRegistros(veiculo);
+        List<Registro> registros = GerenciadorDeRegistro.buscarRegistros(placaVeiculo);
 
         if (registros.isEmpty()) {
             System.out.println("Não há nenhum registro de Aluguel ou devolução.");
         } else {
-                System.out.println("Registro, Local, Data e Hora, Placa, Doc. Cliente");
+            System.out.println("|       Registro       |        Local         |      Data e Hora     |        Placa         |    Doc. Cliente      |");
+            System.out.println("| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |");
             for (Registro registro : registros) {
-                System.out.println(registro);
+                System.out.println("| " + String.format("%20s", registro.isAlugado()? "Alugado": "Devolvido") + " | " + String.format("%20s", registro.getLocal()) + " | " +
+                        String.format("%20s", registro.getDataHora()).replace('T', ' ') + " | " + String.format("%20s", registro.getVeiculo().getPlaca()) + " | " +
+                        String.format("%20s", registro.getCliente().getDocumento()) + " |");
             }
+            System.out.println("-".repeat(116));
         }
     }
+
+
+
 }

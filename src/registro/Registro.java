@@ -4,19 +4,19 @@ import pessoa.*;
 import java.time.LocalDateTime;
 
 public abstract class Registro {
+    private boolean alugado;
     protected String local;
-
     protected LocalDateTime dataHora;
 
     protected Pessoa cliente;
-
     protected Veiculo veiculo;
 
-    public Registro(String local, LocalDateTime dataHora, Pessoa cliente, Veiculo veiculo) {
+    public Registro(String local, LocalDateTime dataHora, Pessoa cliente, Veiculo veiculo, boolean alugado) {
         this.local = local;
         this.dataHora = dataHora;
         this.cliente = cliente;
         this.veiculo = veiculo;
+        this.alugado = alugado;
     }
 
     public String getLocal() {
@@ -51,14 +51,21 @@ public abstract class Registro {
         this.veiculo = veiculo;
     }
 
+    public boolean isAlugado() {
+        return alugado;
+    }
+
+    public void setAlugado(boolean estado){
+        this.alugado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Registro{" +
-                "local='" + local + '\'' +
-                ", dataHora=" + dataHora +
-                ", cliente=" + cliente +
-                ", veiculo=" + veiculo +
-                '}';
+        return "Registro\n" +
+                "Local:'" + local + "\n" +
+                "Data/Hora: " + dataHora +
+                "Documento Cliente: " + cliente + "\n" +
+                "Placa Veiculo: " + veiculo + "\n";
     }
 }
 

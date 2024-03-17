@@ -1,4 +1,4 @@
-package arquivosDB;
+package gerenciaDB;
 
 import pessoa.Pessoa;
 import pessoa.PessoaFisica;
