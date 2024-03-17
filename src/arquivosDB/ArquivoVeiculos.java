@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArquivoVeiculos {
@@ -20,8 +21,10 @@ public ArquivoVeiculos(){
     verificarArquivo();
 }
 
-    public static void carregarVeiculos(List<Veiculo> veiculos) {
+    public static List<Veiculo>  carregarVeiculos() {
         verificarArquivo();
+
+        List<Veiculo> veiculos = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(CAMINHO_VEICULOSBD))) {
             String linha;
             while ((linha = br.readLine()) != null) {
@@ -33,6 +36,8 @@ public ArquivoVeiculos(){
         } catch (IOException e) {
             System.out.println("Erro ao carregar veículos: " + e.getMessage());
         }
+
+        return veiculos;
     }
 
     public static void salvarVeiculo(List<Veiculo> veiculos) {

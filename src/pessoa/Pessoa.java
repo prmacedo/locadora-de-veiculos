@@ -8,9 +8,13 @@ public abstract class Pessoa {
 
     protected String tipo;
 
-    public Pessoa(String nome, String documento) {
-        this.nome = nome;
+    public Pessoa(String documento) {
         this.documento = documento;
+    }
+
+    public Pessoa(String nome, String documento) {
+        this(documento);
+        this.nome = nome;
     }
 
     public String getNome() {

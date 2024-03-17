@@ -79,11 +79,11 @@ public class EntraValores {
             try {
                 System.out.print(mensagem);
                 String input = scanner.nextLine();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                 dataHora = LocalDateTime.parse(input, formatter);
                 return dataHora;
             } catch (Exception e) {
-                System.out.println("Entrada inválida! Por favor, digite a data e hora no formato correto (yyyy-MM-dd HH:mm:ss).");
+                System.out.println("Entrada inválida! Por favor, digite a data e hora no formato correto (yyyy-MM-dd HH:mm).");
             }
         } while (true);
     }

@@ -6,9 +6,7 @@ public enum MenuAluguel implements OpcaoMenu {
 
     ALUGAR_VEICULO(MenuRegistros::alugaVeiculo),
     DEVOLVER_VEICULO(MenuRegistros::devolveVeiculo),
-    BUSCAR_REGISTROS(MenuRegistros::buscaRegitro),
-    CALCULAR_DIARIAS(MenuRegistros::calculaDiaria);
-
+    BUSCAR_REGISTROS(MenuRegistros::buscaRegitro);
 
     private final Runnable acao;
 

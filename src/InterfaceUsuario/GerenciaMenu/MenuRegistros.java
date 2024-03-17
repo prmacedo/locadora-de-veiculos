@@ -4,56 +4,75 @@ import Gerenciadores.GerenciadorDePessoa;
 import Gerenciadores.GerenciadorDeRegistro;
 import Gerenciadores.GerenciadorDeVeiculo;
 
+import Gerenciadores.ProcessaPagamento;
+import pessoa.Pessoa;
+import registro.Aluguel;
+import registro.Devolucao;
+import registro.Registro;
 import veiculo.Veiculo;
 
-import static utils.EntraValores.entradaLocalDateTime;
-import static utils.EntraValores.entradaString;
-import static utils.EntraValores.entradaTipoVeiculo;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import static utils.EntraValores.*;
 
 public class MenuRegistros {
-
-    private static final GerenciadorDeRegistro registros = new GerenciadorDeRegistro();
-    private static final GerenciadorDePessoa gerenciadorDePessoa = new GerenciadorDePessoa();
-    private static final GerenciadorDeVeiculo gerenciadorDeVeiculo = new GerenciadorDeVeiculo();
-
-
     public static void alugaVeiculo() {
-        registros.alugarVeiculo(
-                entradaString("Digite o local: "),
-                entradaLocalDateTime("Digite a data"),
-                gerenciadorDePessoa.buscarPessoa(
-                        entradaString("Digite o nome: ")
-                ),
-                new Veiculo(
-                        entradaString("Digite placa do veiculo: "),
-                        entradaTipoVeiculo("Escolha o tipo: ")
-                )
-        );
+        String local = entradaStringNotEmpty("Digite o local: ");
+        LocalDateTime dataHora = entradaLocalDateTime("Digite a data: ");
+
+        String documentoCliente = entradaStringNotEmpty("Digite o documento do cliente: ");
+        Pessoa cliente = GerenciadorDePessoa.buscarPessoa(documentoCliente);
+
+        String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
+        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
+
+        Aluguel aluguel = new Aluguel(local, dataHora, cliente, veiculo);
+
+        boolean veiculoAlugado = GerenciadorDeRegistro.alugarVeiculo(aluguel);
+
+        System.out.println(veiculoAlugado ? "Veículo alugado com sucesso!" : "Não foi possível alugar o veículo.");
     }
 
     public static void devolveVeiculo() {
-        registros.devolverVeiculo(
-                entradaString("Digite o local: "),
-                entradaLocalDateTime("Digite a data"),
-                gerenciadorDePessoa.buscarPessoa(
-                        entradaString("Digite o nome: ")
-                ),
-                new Veiculo(
-                        entradaString("Digite placa do veiculo: "),
-                        entradaTipoVeiculo("Escolha o tipo: ")
-                )
-        );
+        String local = entradaStringNotEmpty("Digite o local: ");
+        LocalDateTime dataHora = entradaLocalDateTime("Digite a data: ");
+
+        String documentoCliente = entradaStringNotEmpty("Digite o documento do cliente: ");
+        Pessoa cliente = GerenciadorDePessoa.buscarPessoa(documentoCliente);
+
+        String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
+        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
+
+        Devolucao devolucao = new Devolucao(local, dataHora, cliente, veiculo);
+
+        boolean devolucaoRealizada = GerenciadorDeRegistro.devolverVeiculo(devolucao);
+
+        if (devolucaoRealizada) {
+            Aluguel aluguel = GerenciadorDeRegistro.buscarAluguel(veiculo, cliente);
+            int diarias = GerenciadorDeRegistro.calcularDiarias(aluguel, devolucao);
+            double pagamento = ProcessaPagamento.calcularPagamento(diarias, cliente, veiculo);
+
+            System.out.println("O valor a ser pago pelo(s) " + diarias + " dias é R$ " + pagamento);
+        } else {
+            System.out.println("Não foi possível realizar a devolução do veículo.");
+        }
     }
 
 
     public static void buscaRegitro() {
-        registros.buscarRegistros(
-                gerenciadorDeVeiculo.buscarVeiculo(
-                        entradaString("Digite a placa: ")
-                )
-        );
-    }
+        String placaVeiculo = entradaStringNotEmpty("Digite placa do veiculo: ");
+        Veiculo veiculo = GerenciadorDeVeiculo.buscarVeiculo(placaVeiculo);
 
-    public static void calculaDiaria() {
+        List<Registro> registros = GerenciadorDeRegistro.buscarRegistros(veiculo);
+
+        if (registros.isEmpty()) {
+            System.out.println("Não há nenhum registro de Aluguel ou devolução.");
+        } else {
+                System.out.println("Registro | Placa | Doc. Cliente");
+            for (Registro registro : registros) {
+                System.out.println(registro.getClass().getName() + " | " + registro.getVeiculo().getPlaca() + " | " + registro.getCliente().getDocumento());
+            }
+        }
     }
 }
