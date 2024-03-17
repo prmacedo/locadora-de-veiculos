@@ -17,7 +17,7 @@ public class PessoaJuridica extends Pessoa {
     public double obterDesconto(int numeroDeDiarias) {
         double desconto = 0;
 
-        if (numeroDeDiarias >= 5) {
+        if (numeroDeDiarias >= 3) {
             desconto = 10 / 100d;
         }
 
