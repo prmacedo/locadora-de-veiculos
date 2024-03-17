@@ -13,53 +13,52 @@ import static InterfaceUsuario.Menu.limpaTela;
 
 public class GerenciadorDeRegistro {
 
-    List<Registro> registros;
+    private static List<Registro> registros = new ArrayList<>();;
 
-    public GerenciadorDeRegistro(){
-        this.registros = new ArrayList<>();
-    }
-
-    public void alugarVeiculo(String local, LocalDateTime dataHora, Pessoa cliente, Veiculo veiculo){
-        if (estaAlugado(veiculo)){
-            System.out.println("Veículo já está alugado");
-            return;
+    public static boolean alugarVeiculo(Aluguel aluguel){
+        if (estaAlugado(aluguel.getVeiculo())){
+            return false;
         }
-        this.registros.add(new Aluguel(local, dataHora, cliente, veiculo));
+        registros.add(aluguel);
+        return true;
     }
 
-    private boolean estaAlugado(Veiculo veiculo) {
+    private static boolean estaAlugado(Veiculo veiculo) {
         return buscarRegistros(veiculo).size()%2 != 0;
     }
 
-    public void devolverVeiculo(String local, LocalDateTime dataHora, Pessoa cliente, Veiculo veiculo){
-        if(!estaAlugado(veiculo)){
+    public static boolean devolverVeiculo(Devolucao devolucao){
+        if(!estaAlugado(devolucao.getVeiculo())){
             System.out.println("Veículo não está alugado!");
-            return;
+            return false;
         }
-        this.registros.add(new Devolucao(local, dataHora, cliente, veiculo));
+        registros.add(devolucao);
+        return true;
     }
 
-    public List<Registro> buscarRegistros(Veiculo veiculo){
+    public static Aluguel buscarAluguel(Veiculo veiculo, Pessoa cliente) {
+        List<Registro> registrosInvertidos = new ArrayList<>(registros);
+        Collections.reverse(registrosInvertidos);
+
+        return (Aluguel) registrosInvertidos.stream().filter(
+                registro -> (
+                        registro instanceof Aluguel &&
+                                registro.getCliente().equals(cliente) &&
+                                registro.getVeiculo().equals(veiculo)))
+                .findFirst().orElse(null);
+    }
+
+    public static List<Registro> buscarRegistros(Veiculo veiculo){
         List<Registro> registrosEncontrados = new ArrayList<>();
-        for(Registro registro: this.registros){
+        for(Registro registro: registros){
             if (registro.getVeiculo().equals(veiculo)){
                 registrosEncontrados.add(registro);
             }
         }
-        if (registrosEncontrados.size() <= 0) {
-            System.out.println("Nenhum registro encontrado!");
-            try {
-                Thread.sleep(3000);
-                limpaTela();
-                Menu.menuAluguel();
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
-        }
-            return registrosEncontrados;
+        return registrosEncontrados;
     }
                            
-    private int calcularDiarias(Aluguel aluguel, Devolucao devolucao) {
+    public static int calcularDiarias(Aluguel aluguel, Devolucao devolucao) {
         long diferencaEmMinutos = aluguel.getDataHora().until(devolucao.getDataHora(), ChronoUnit.MINUTES);
         double diferencaEmDias = diferencaEmMinutos / 1440d;
         double diasArredondados = Math.ceil(diferencaEmDias);
