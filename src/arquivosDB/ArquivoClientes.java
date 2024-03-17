@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArquivoClientes {
@@ -21,8 +22,11 @@ public class ArquivoClientes {
         verificarArquivo();
     }
 
-    public static void carregarPessoas(List<Pessoa> pessoas) {
+    public static List<Pessoa> carregarPessoas() {
         verificarArquivo();
+
+        List<Pessoa> pessoas = new ArrayList<>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(CAMINHO_CLIENTESSBD))) {
             String linha;
             while ((linha = br.readLine()) != null) {
@@ -36,6 +40,8 @@ public class ArquivoClientes {
         } catch (IOException e) {
             System.out.println("Erro ao carregar clientes: " + e.getMessage());
         }
+
+        return pessoas;
     }
 
     public static void salvarPessoa(List<Pessoa> pessoas) {

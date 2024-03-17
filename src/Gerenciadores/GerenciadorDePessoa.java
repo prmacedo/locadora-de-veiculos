@@ -7,11 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorDePessoa {
-    private static List<Pessoa> pessoas = new ArrayList<>();
-
-    public GerenciadorDePessoa(){
-        ArquivoClientes.carregarPessoas(pessoas);
-    }
+    private static List<Pessoa> pessoas = ArquivoClientes.carregarPessoas();;
 
     public static  <T extends Pessoa> boolean cadastrarPessoa(T pessoa) {
         if (pessoaExiste(pessoa) != null) {

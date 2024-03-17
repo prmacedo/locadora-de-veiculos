@@ -7,11 +7,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class GerenciadorDeVeiculo {
-    private static List<Veiculo> veiculos = new ArrayList<>();
-
-    public GerenciadorDeVeiculo() {
-        ArquivoVeiculos.carregarVeiculos(veiculos);
-    }
+    private static List<Veiculo> veiculos = ArquivoVeiculos.carregarVeiculos();
 
     public static boolean cadastrarVeiculo(Veiculo veiculo) {
         if (veiculoExiste(veiculo) != null) {
