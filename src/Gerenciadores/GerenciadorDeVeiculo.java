@@ -20,7 +20,7 @@ public class GerenciadorDeVeiculo {
     }
 
     public static boolean alterarVeiculo(String placaAntiga, Veiculo veiculoNovo) {
-        Veiculo veiculoAAlterar = veiculoExiste(placaAntiga);
+        Veiculo veiculoAAlterar = veiculoExiste(placaAntiga.trim().toUpperCase());
 
         if (veiculoAAlterar == null) {
             return false;
@@ -48,7 +48,7 @@ public class GerenciadorDeVeiculo {
 
     public static Veiculo buscarVeiculo(String placa) {
         return veiculos.stream()
-                .filter(veiculo -> veiculo.getPlaca().equals(placa))
+                .filter(veiculo -> veiculo.getPlaca().equals(placa.trim().toUpperCase()))
                 .findFirst().orElse(null);
     }
 
