@@ -1,6 +1,6 @@
 package pessoa;
 
-public class PessoaFisica extends Pessoa{
+public class PessoaFisica extends Pessoa {
     public PessoaFisica(String nome, String documento) {
         super(nome, documento);
         this.setTipo("PF");
@@ -10,5 +10,16 @@ public class PessoaFisica extends Pessoa{
         return "Pessoa Física: " +
                 "nome: " + nome + "\n" +
                 "documento: " + documento + "\n";
+    }
+
+    @Override
+    public double obterDesconto(int numeroDeDiarias) {
+        double desconto = 0;
+
+        if (numeroDeDiarias >= 3) {
+            desconto = 5 / 100d;
+        }
+
+        return desconto;
     }
 }

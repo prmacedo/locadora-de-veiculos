@@ -3,8 +3,7 @@ package InterfaceUsuario.GerenciaMenu;
 import Gerenciadores.GerenciadorDeVeiculo;
 import InterfaceUsuario.Menu;
 import utils.Paginacao;
-import veiculo.TipoVeiculo;
-import veiculo.Veiculo;
+import veiculo.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +19,9 @@ public class MenuVeiculos {
         String placa = entradaStringNotEmpty("Digite placa do veiculo: ");
         TipoVeiculo tipo = entradaTipoVeiculo("Escolha o tipo: ");
 
-        boolean veiculoCadastrado = GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo(placa, tipo));
+        Veiculo veiculo = GerenciadorDeVeiculo.criarVeiculo(placa, tipo);
+
+        boolean veiculoCadastrado = GerenciadorDeVeiculo.cadastrarVeiculo(veiculo);
 
         System.out.println(veiculoCadastrado ? "Veículo cadastrado com sucesso!" : "Erro ao cadastrar veículo.");
     }
@@ -30,7 +31,9 @@ public class MenuVeiculos {
         String placaNova = entradaStringNotEmpty("Placa nova: ");
         TipoVeiculo tipoNovo = entradaTipoVeiculo("Novo tipo: ");
 
-        boolean veiculoAlterado = GerenciadorDeVeiculo.alterarVeiculo(placaAntiga, new Veiculo(placaNova, tipoNovo));
+        Veiculo veiculoNovo = GerenciadorDeVeiculo.criarVeiculo(placaNova, tipoNovo);
+
+        boolean veiculoAlterado = GerenciadorDeVeiculo.alterarVeiculo(placaAntiga, veiculoNovo);
 
         System.out.println(veiculoAlterado ? "Veículo alterado com sucesso!" : "Erro ao alterar veículo.");
     }
@@ -38,7 +41,7 @@ public class MenuVeiculos {
     public static void buscaVeiculo() {
         String termoDeBusca = entradaStringNotEmpty("Digite o termo para busca: ");
 
-        Veiculo veiculoEncontrado = GerenciadorDeVeiculo.buscarVeiculo(termoDeBusca);
+        Veiculo veiculoEncontrado = GerenciadorDeVeiculo.buscarVeiculoPorParteDaPlaca(termoDeBusca);
 
         if (veiculoEncontrado != null) {
             System.out.println("Veículo encontrado: \n" + veiculoEncontrado);

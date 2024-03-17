@@ -4,13 +4,13 @@ import pessoa.*;
 import java.time.LocalDateTime;
 
 public abstract class Registro {
-    private String local;
+    protected String local;
 
-    private LocalDateTime dataHora;
+    protected LocalDateTime dataHora;
 
-    private Pessoa cliente;
+    protected Pessoa cliente;
 
-    private Veiculo veiculo;
+    protected Veiculo veiculo;
 
     public Registro(String local, LocalDateTime dataHora, Pessoa cliente, Veiculo veiculo) {
         this.local = local;
@@ -51,7 +51,15 @@ public abstract class Registro {
         this.veiculo = veiculo;
     }
 
-
+    @Override
+    public String toString() {
+        return "Registro{" +
+                "local='" + local + '\'' +
+                ", dataHora=" + dataHora +
+                ", cliente=" + cliente +
+                ", veiculo=" + veiculo +
+                '}';
+    }
 }
 
 

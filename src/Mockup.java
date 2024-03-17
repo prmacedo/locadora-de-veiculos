@@ -1,6 +1,5 @@
 import Gerenciadores.GerenciadorDeVeiculo;
-import veiculo.TipoVeiculo;
-import veiculo.Veiculo;
+import veiculo.*;
 
 public class Mockup {
     public static void init() {
@@ -8,12 +7,12 @@ public class Mockup {
     }
 
     private static void adicionarVeiculos() {
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("POO2X24", TipoVeiculo.SUV));
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("JAV4K12", TipoVeiculo.PEQUENO));
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("SOL1D55", TipoVeiculo.MEDIO));
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("ABC3D18", TipoVeiculo.PEQUENO));
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("NLC4A45", TipoVeiculo.MEDIO));
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("NPC4F09", TipoVeiculo.MEDIO));
-        GerenciadorDeVeiculo.cadastrarVeiculo(new Veiculo("HGD5A77", TipoVeiculo.SUV));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoSUV("POO2X24"));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoPequeno("JAV4K12"));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoMedio("SOL1D55"));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoPequeno("ABC3D18"));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoMedio("NLC4A45"));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoMedio("NPC4F09"));
+        GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoSUV("HGD5A77"));
     }
 }

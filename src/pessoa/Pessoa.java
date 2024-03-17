@@ -1,8 +1,10 @@
 package pessoa;
 
+import desconto.ObterDesconto;
+
 import java.util.Objects;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements ObterDesconto {
     protected String nome;
     protected String documento;
 

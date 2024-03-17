@@ -24,9 +24,8 @@ public class GerenciadorDeRegistro {
         return buscarRegistros(veiculo).size()%2 != 0;
     }
 
-    public static boolean devolverVeiculo(Devolucao devolucao){
-        if(!estaAlugado(devolucao.getVeiculo())){
-            System.out.println("Veículo não está alugado!");
+    public static boolean devolverVeiculo(Devolucao devolucao, Aluguel aluguel){
+        if(!estaAlugado(devolucao.getVeiculo()) && !devolucao.getCliente().equals(aluguel.getCliente())){
             return false;
         }
         registros.add(devolucao);
