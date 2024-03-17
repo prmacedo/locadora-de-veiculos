@@ -66,7 +66,7 @@ public class MenuRegistros {
 
         List<Registro> registros = GerenciadorDeRegistro.buscarRegistros(veiculo);
 
-        if (registros.size() == 0) {
+        if (registros.isEmpty()) {
             System.out.println("Não há nenhum registro de Aluguel ou devolução.");
         } else {
                 System.out.println("Registro | Placa | Doc. Cliente");

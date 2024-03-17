@@ -1,19 +1,16 @@
 package Gerenciadores;
 
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-import InterfaceUsuario.Menu;
 import registro.*;
 import pessoa.*;
 import veiculo.*;
 
-import static InterfaceUsuario.Menu.limpaTela;
 
 public class GerenciadorDeRegistro {
 
-    private static List<Registro> registros = new ArrayList<>();;
+    private static List<Registro> registros = new ArrayList<>();
 
     public static boolean alugarVeiculo(Aluguel aluguel){
         if (estaAlugado(aluguel.getVeiculo())){
