@@ -1,4 +1,4 @@
-package arquivosDB;
+package gerenciaDB;
 
 import Gerenciadores.GerenciadorDeVeiculo;
 import veiculo.TipoVeiculo;
@@ -53,7 +53,6 @@ public ArquivoVeiculos(){
     }
 
     public static void verificarArquivo() {
-        System.out.println("VERIFICANDO ARQUIVO");
         veiculos = new File(CAMINHO_VEICULOSBD);
         try {
             if (!veiculos.exists()) {

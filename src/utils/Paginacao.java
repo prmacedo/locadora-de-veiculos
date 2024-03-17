@@ -24,9 +24,15 @@ public class Paginacao {
             int startIndex = (paginaAtual - 1) * resultadosPorPagina;
             int endIndex = Math.min(startIndex + resultadosPorPagina, listaTipos.size());
 
-            if(Veiculo.class.isAssignableFrom(classe)) System.out.println("|         Placa        |          Tipo        |");
-            if(Pessoa.class.isAssignableFrom(classe)) System.out.println ("|       Documento      |          Nome        |");
-             System.out.println("| -------------------- | -------------------- |");
+            if(Veiculo.class.isAssignableFrom(classe)) {
+                System.out.println("|         Placa        |          Tipo        |");
+                System.out.println("| -------------------- | -------------------- |");
+            }
+            if(Pessoa.class.isAssignableFrom(classe)) {
+                System.out.println("|       Documento      |          Nome        |");
+                System.out.println("| -------------------- | -------------------- |");
+            }
+
 
             for (int i = startIndex; i < endIndex; i++) {
                 T tipo = listaTipos.get(i);

@@ -1,6 +1,6 @@
 package Gerenciadores;
 
-import arquivosDB.ArquivoVeiculos;
+import gerenciaDB.ArquivoVeiculos;
 import veiculo.*;
 
 import java.util.List;

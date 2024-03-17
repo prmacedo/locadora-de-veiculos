@@ -1,9 +1,8 @@
 package Gerenciadores;
 
-import arquivosDB.ArquivoClientes;
+import gerenciaDB.ArquivoClientes;
 import pessoa.Pessoa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciadorDePessoa {
