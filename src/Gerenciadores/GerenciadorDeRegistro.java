@@ -26,7 +26,6 @@ public class GerenciadorDeRegistro {
 
     public static boolean devolverVeiculo(Devolucao devolucao){
         if(!estaAlugado(devolucao.getVeiculo())){
-            System.out.println("Veículo não está alugado!");
             return false;
         }
         registros.add(devolucao);

@@ -1,8 +1,10 @@
 package veiculo;
 
+import tarifaDiaria.ObterTarifaDiaria;
+
 import java.util.Objects;
 
-public class Veiculo {
+public abstract class Veiculo implements ObterTarifaDiaria {
     private String placa;
     private TipoVeiculo tipo;
 

@@ -1,5 +1,6 @@
 package arquivosDB;
 
+import Gerenciadores.GerenciadorDeVeiculo;
 import veiculo.TipoVeiculo;
 import veiculo.Veiculo;
 
@@ -31,7 +32,7 @@ public ArquivoVeiculos(){
                 String[] dados = linha.split(";");
                 String placa = dados[0];
                 TipoVeiculo tipo = TipoVeiculo.valueOf(dados[1]);
-                veiculos.add(new Veiculo(placa, tipo));
+                veiculos.add(GerenciadorDeVeiculo.criarVeiculo(placa, tipo));
             }
         } catch (IOException e) {
             System.out.println("Erro ao carregar veículos: " + e.getMessage());
