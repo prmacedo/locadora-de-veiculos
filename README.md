@@ -157,7 +157,7 @@ Opção 1:
 3. SUV
 Escolha o tipo: 
 ```
-- Se tudo der certo deverá aparecer a mensaggem ```Pessoa cadastrada com sucesso!```
+- Se tudo der certo deverá aparecer a mensaggem ```Veículo cadastrado com sucesso!```
 
 
 Opção 2:
