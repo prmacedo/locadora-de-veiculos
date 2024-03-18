@@ -55,9 +55,9 @@ public class GerenciadorDeRegistro {
                 .findFirst().orElse(null);
     }
 
-    public static List<Registro> buscarRegistros(Veiculo veiculo){
+    private static List<Registro> buscarRegistros(Veiculo veiculo){
         List<Registro> registrosEncontrados = new ArrayList<>();
-        for(Registro registro: alugueis){
+        for(Registro registro: registros){
             if (registro.getVeiculo().equals(veiculo)){
                 registrosEncontrados.add(registro);
             }
