@@ -207,8 +207,8 @@ Opção 1:
 - Digite a data e hora do início do contrato ou ENTER para data e hora atual.
 - Digite o documento do cliente (Cliente já deverá estar cadastrado)
 - Digite a placa do veículo (Veículo já deverá estar cadastrado)
-- Se tudo der certo aparecerá a mensaggem ```Veículo alugado com sucesso!```
- - <strong>Caso a placa ou documento não existam apresentará um erro e retornará ao menu</strong>
+- Se tudo der certo aparecerá a mensagem ```Veículo alugado com sucesso!```
+ - <strong>Caso a placa ou documento não existam, um erro será apresentado e retornará ao menu.</strong>
 
 
 Opção 2:
@@ -217,7 +217,8 @@ Opção 2:
 - Digite o documento do cliente (Cliente já deverá estar cadastrado)
 - Digite a placa do veículo (Veículo já deverá estar cadastrado)
 - Se tudo der certo aparecerá a mensaggem com o período e o valor a ser pago
-- <strong>Caso a placa ou documento não existam apresentará um erro e retornará ao menu</strong>
+- <strong>Caso a placa ou documento não existam, um erro será apresentado e retornará ao menu.</strong>
+- <strong>Caso a data seja antes da data de aluguel ou o veículo já esteja devolvido, um erro será apresentado.</strong>
 
 Opção 3:
 - Digite a placa do veículo para busca
