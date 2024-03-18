@@ -30,3 +30,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+src/DB/alugueisDB.txt
+src/DB/clientesDB.txt
+src/DB/registrosDB.txt
+src/DB/veiculosDB.txt
