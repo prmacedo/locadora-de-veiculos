@@ -37,9 +37,15 @@ public class GerenciadorDePessoa {
         return true;
     }
 
-    public static Pessoa buscarPessoa(String termoDeBusca) {
+    public static Pessoa buscarPessoaPorTermo(String termoDeBusca) {
         return pessoas.stream()
                 .filter(pessoa -> pessoa.getDocumento().contains(termoDeBusca))
+                .findFirst().orElse(null);
+    }
+
+    public static Pessoa buscarPessoa(String documento) {
+        return pessoas.stream()
+                .filter(pessoa -> pessoa.getDocumento().equals(documento))
                 .findFirst().orElse(null);
     }
 

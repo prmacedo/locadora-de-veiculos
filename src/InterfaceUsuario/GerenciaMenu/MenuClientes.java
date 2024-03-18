@@ -33,7 +33,7 @@ public class MenuClientes {
     }
 
     public static void buscaCliente() {
-        Pessoa pessoaEncontrada = GerenciadorDePessoa.buscarPessoa(
+        Pessoa pessoaEncontrada = GerenciadorDePessoa.buscarPessoaPorTermo(
                 entradaStringNotEmpty("Digite o termo para busca: ")
         );
         if (pessoaEncontrada != null) {
@@ -64,6 +64,11 @@ public class MenuClientes {
         documentoAntigo = manterApenasNumeros(documentoAntigo);
 
         Pessoa pessoa = GerenciadorDePessoa.buscarPessoa(documentoAntigo);
+
+        if (pessoa == null) {
+            System.out.println("Esta pessoa não existe.");
+            return;
+        }
 
         String documentoNovo = entradaStringNotEmpty("Digite documento novo: ");
         documentoNovo = manterApenasNumeros(documentoNovo);
