@@ -8,9 +8,9 @@ public class PessoaJuridica extends Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa Juridica: " +
-                "nome: " + nome + "\n" +
-                "documento: " + documento + "\n";
+        return "Pessoa Juridica: \n" +
+                "Nome: " + nome + "\n" +
+                "Documento: " + documento + "\n";
     }
 
     @Override
