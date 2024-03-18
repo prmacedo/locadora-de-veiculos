@@ -68,7 +68,12 @@ public class MenuRegistros {
 
         Aluguel aluguel = GerenciadorDeRegistro.buscarAluguel(veiculo, cliente);
         if (aluguel == null) {
-            System.out.println("Não foi possível devolver o veículo.");
+            System.out.println("Não foi possível devolver o veículo, pois o aluguel não existe.");
+            return;
+        }
+
+        if(aluguel.getDataHora().isAfter(dataHora)){
+            System.out.println("Data inválida! Digite uma data após " + dataHora);
             return;
         }
 
@@ -78,12 +83,12 @@ public class MenuRegistros {
         boolean devolucaoRealizada = GerenciadorDeRegistro.devolverVeiculo(devolucao);
 
         if (devolucaoRealizada) {
-            int diarias = GerenciadorDeRegistro.calcularDiarias(aluguel, devolucao);
+            int diarias = ProcessaPagamento.calcularDiarias(aluguel, devolucao);
             double pagamento = ProcessaPagamento.calcularPagamento(diarias, cliente, veiculo);
 
             System.out.println("O valor a ser pago pelo(s) " + diarias + " dias é R$ " + pagamento);
         } else {
-            System.out.println("Não foi possível realizar a devolução do veículo.");
+            System.out.println("Não foi possível realizar a devolução do veículo pois ele já foi devolvido.");
         }
     }
 

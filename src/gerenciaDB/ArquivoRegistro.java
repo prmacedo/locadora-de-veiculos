@@ -77,7 +77,11 @@ public class ArquivoRegistro extends TratandoEntidadesParaArquivoAluguel {
                 Pessoa cliente = desserializarPessoa(dados[2] + ";" + dados[3] + ";" + dados[4]);
                 Veiculo veiculo = desserializarVeiculo(dados[5] + ";" + dados[6]);
                 boolean alugado = Boolean.parseBoolean(dados[7]);
-                registros.add(new Aluguel(local, dataHora, cliente, veiculo, alugado));
+                if (alugado){
+                    registros.add(new Aluguel(local, dataHora, cliente, veiculo, alugado));
+                } else{
+                    registros.add(new Devolucao(local, dataHora, cliente, veiculo, alugado));
+                }
             }
         } catch (IOException e) {
             System.out.println("Erro ao carregar registros: " + e.getMessage());

@@ -34,8 +34,11 @@ public class ArquivoClientes {
                 String nome = dados[0];
                 String documento = dados[1];
                 String tipo = dados[2];
-                if(dados[2].length() >= 12) pessoas.add(new PessoaJuridica(nome, documento));
-                pessoas.add(new PessoaFisica(nome, documento));
+                if(documento.length() >= 12) {
+                    pessoas.add(new PessoaJuridica(nome, documento));
+                } else{
+                    pessoas.add(new PessoaFisica(nome, documento));
+                }
             }
         } catch (IOException e) {
             System.out.println("Erro ao carregar clientes: " + e.getMessage());

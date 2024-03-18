@@ -37,6 +37,9 @@ public class GerenciadorDeRegistro {
             if(aluguel == null){
                 return false;
             }
+            if(!estaAlugado(devolucao.getVeiculo())){
+                return false;
+            }
             devolucao.setAlugado(false);
             registros.add(devolucao);
             ArquivoRegistro.removerAluguel(devolucao);
@@ -78,12 +81,5 @@ public class GerenciadorDeRegistro {
         return registrosEncontrados;
     }
 
-    public static int calcularDiarias(Aluguel aluguel, Devolucao devolucao) {
-        long diferencaEmMinutos = aluguel.getDataHora().until(devolucao.getDataHora(), ChronoUnit.MINUTES);
-        double diferencaEmDias = diferencaEmMinutos / 1440d;
-        double diasArredondados = Math.ceil(diferencaEmDias);
-
-        return (int) diasArredondados;
-    }
 
 }
