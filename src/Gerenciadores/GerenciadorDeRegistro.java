@@ -37,6 +37,9 @@ public class GerenciadorDeRegistro {
             if(aluguel == null){
                 return false;
             }
+            if(!estaAlugado(devolucao.getVeiculo())){
+                return false;
+            }
             devolucao.setAlugado(false);
             registros.add(devolucao);
             ArquivoRegistro.removerAluguel(devolucao);
