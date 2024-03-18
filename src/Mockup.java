@@ -1,9 +1,12 @@
-import Gerenciadores.GerenciadorDeVeiculo;
+import Gerenciadores.*;
+import pessoa.*;
 import veiculo.*;
 
 public class Mockup {
     public static void init() {
+
         adicionarVeiculos();
+        adicionarClientes();
     }
 
     private static void adicionarVeiculos() {
@@ -14,5 +17,14 @@ public class Mockup {
         GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoMedio("NLC4A45"));
         GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoMedio("NPC4F09"));
         GerenciadorDeVeiculo.cadastrarVeiculo(new VeiculoSUV("HGD5A77"));
+    }
+
+    private static void adicionarClientes() {
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaFisica("Fulano", "12345678910"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
     }
 }

@@ -83,7 +83,7 @@ public class MenuRegistros {
         boolean devolucaoRealizada = GerenciadorDeRegistro.devolverVeiculo(devolucao);
 
         if (devolucaoRealizada) {
-            int diarias = GerenciadorDeRegistro.calcularDiarias(aluguel, devolucao);
+            int diarias = ProcessaPagamento.calcularDiarias(aluguel, devolucao);
             double pagamento = ProcessaPagamento.calcularPagamento(diarias, cliente, veiculo);
 
             System.out.println("O valor a ser pago pelo(s) " + diarias + " dias é R$ " + pagamento);
