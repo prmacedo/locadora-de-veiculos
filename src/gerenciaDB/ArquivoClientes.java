@@ -51,7 +51,7 @@ public class ArquivoClientes {
         verificarArquivo();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CAMINHO_CLIENTESSBD))) {
             for (Pessoa pessoa : pessoas) {
-                bw.write(pessoa.getNome() + ";" + pessoa.getDocumento() + ";" + pessoa.getTipo() + "\n");
+                bw.write(pessoa.getNome() + ";" + pessoa.getDocumento() + ";" + pessoa.getClass().getName() + "\n");
             }
         } catch (IOException e) {
             System.out.println("Erro ao salvar clientes: " + e.getMessage());

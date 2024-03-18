@@ -8,7 +8,7 @@ public abstract class Pessoa implements ObterDesconto {
     protected String nome;
     protected String documento;
 
-    protected String tipo;
+    //protected String tipo; //Apenas para visualização nos arquivos de texto do BD
 
     public Pessoa(String documento) {
         this.documento = documento;
@@ -36,12 +36,12 @@ public abstract class Pessoa implements ObterDesconto {
     }
 
     public String getTipo() {
-        return tipo;
+        return this.getClass().getName().replaceAll("pessoa.","");
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+//    public void setTipo(String tipo) {
+//        this.tipo = tipo;
+//    }
 
     @Override
     public int hashCode() {

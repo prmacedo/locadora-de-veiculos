@@ -1,0 +1,6 @@
+Fulano;12345678910;pessoa.PessoaFisica
+Loja do Fulano;66499961000109;pessoa.PessoaJuridica
+Loja do Cicrano;16499961000109;pessoa.PessoaJuridica
+Loja do beltrano;66499961002109;pessoa.PessoaJuridica
+cicrano;12345678911;pessoa.PessoaFisica
+beltrano;12345678918;pessoa.PessoaFisica
