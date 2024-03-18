@@ -22,9 +22,9 @@ public class Mockup {
     private static void adicionarClientes() {
         GerenciadorDePessoa.cadastrarPessoa(new PessoaFisica("Fulano", "12345678910"));
         GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
-        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
-        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
-        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
-        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Fulano", "66499961000109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do Cicrano", "16499961000109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("Loja do beltrano", "66499961002109"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaFisica("cicrano", "12345678911"));
+        GerenciadorDePessoa.cadastrarPessoa(new PessoaJuridica("beltrano", "12345678918"));
     }
 }
